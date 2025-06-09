@@ -1,0 +1,351 @@
+[workspace]
+members = [
+  "crates/workspace-hack",
+  "rpc_node",
+  "supra",
+  "consensus/archive",
+  "consensus/epoch_manager",
+  "consensus/execution",
+  "consensus/mempool",
+  "consensus/moonshot",
+  "consensus/node",
+  "consensus/rpc",
+  "consensus/types/lifecycle",
+  "consensus/types/moonshot",
+  "crates/rocksstore",
+  "crates/certifier",
+  "crates/committed_block_synchronizer",
+  "crates/common",
+  "crates/encryption",
+  "crates/file_io/file_io_derive",
+  "crates/file_io/file_io_types",
+  "crates/helper",
+  "crates/network/tls",
+  "crates/network/manager",
+  "crates/network/examples",
+  "qa_cli",
+  "crates/notifier",
+  "crates/pruner",
+  "crates/snapshot",
+  "crates/supra_build",
+  "crates/supra_logger",
+  "crates/task_manager",
+  "crates/test_utils",
+  "crates/types",
+  "crates/storage_interfaces/moonshot_storage_ifc",
+  "crates/storage_interfaces/mempool_storage_ifc",
+  "crates/configurations",
+  "crates/deduplicator",
+  "crates/vm_pool",
+  "crates/version/version_derive",
+  "crates/version/version_types",
+  "crates/storage_interfaces/index_storage_ifc",
+  "crates/chainspec",
+  "crates/file_io/path_config",
+  "crates/libs/committees",
+  "crates/libs/batches",
+  "crates/libs/genesis",
+  "crates/libs/key_pair",
+  "crates/libs/lifecycle",
+  "crates/libs/payloads",
+  "crates/libs/safety_rules",
+  "crates/libs/smr_timestamp",
+  "crates/libs/traits",
+  "crates/libs/transactions",
+  "crates/libs/errors",
+  "crates/libs/votes",
+  "crates/libs/test_utils_2",
+  "crates/libs/consistency_warranter",
+  "crates/migrations",
+]
+
+exclude = ["remote_env/integration_tests"]
+resolver = "2"
+
+default-members = ["supra", "rpc_node", "qa_cli"]
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+trivial_casts = "deny"
+trivial_numeric_casts = "deny"
+variant_size_differences = "deny"
+
+[workspace.lints.clippy]
+unwrap_used = "deny"
+
+[workspace.package]
+edition = "2021"
+version = "0.5.0"
+
+[workspace.dependencies]
+derive_more = { version = "2.0.1", features = ["full"] }
+derive-getters = "0.5.0"
+enum-kinds = "0.5.1"
+indexmap = "2.7.0"
+hashbrown = "0.15.2"
+crossbeam-utils = { version = "0.8.21" }
+urlencoding = "2.1.3"
+insta = { version = "1.41.1" }
+openssl = { version = "0.10.0", features = ["vendored"] }
+rpassword = "7.3.1"
+rexpect = { version = "0.5.0" }
+alloc-track = { version = "0.2.3" }
+tokio = { version = "1.39.2", features = ["full"] }
+console-subscriber = { version = "0.4.0" }
+tokio-util = "0.7.10"
+futures = "0.3.30"
+async-trait = "0.1.73"
+bincode = "1.3.3"
+rand = { version = "0.7.3", features = ["small_rng"] }
+ed25519-dalek = "2.1.0"
+bytes = { version = "1.4.0", features = ["serde"] }
+tokio-stream = { version = "0.1.11", features = ["sync"] }
+anyhow = "1.0.38"
+thiserror = "1.0.45"
+hex = { version = "0.4.3", features = ["serde"] }
+sha3 = "0.10.1"
+toml = "0.8.10"
+dashmap = "6.0.1"
+once_cell = "1.19.0"
+tracing = { version = "0.1.40" }
+tracing-subscriber = { version = "0.3.18", features = [
+  "env-filter",
+  "chrono",
+  "tracing-log",
+] }
+tracing-appender = "0.2.3"
+file-rotate = "0.7.5"
+syn = "2.0.38"
+quote = "1.0.35"
+dotenvy = "0.15.7"
+serde = { version = "1.0.197", features = ["derive"] }
+serde_json = { version = "1.0.114", features = ["preserve_order"] }
+serde_yaml = "0.9.32"
+serde_bytes = "0.11.15"
+tiny-keccak = "2.0.2"
+reqwest = { version = "0.11.23", features = ["json", "rustls-tls", "blocking"] }
+lru = "0.12.3"
+rayon = "1.5.2"
+postcard = { version = "1.0.7", features = ["use-std"] }
+num_cpus = "1.16.0"
+utoipa = { version = "5.3.1", features = ["preserve_order", "yaml"] }
+utoipa-swagger-ui = "5"
+bcs = { git = "https://github.com/aptos-labs/bcs.git", rev = "d31fab9d81748e2594be5cd5cdf845786a30562d" }
+clap = { version = "4.3.9", features = ["derive"] }
+shadow-rs = "0.16.3"
+chrono = { version = "0.4.33" }
+ntex = { version = "2.0.3", features = ["tokio"] }
+ntex-cors = "2.0.0"
+ntex-bytes = "0.1.27"
+paste = "1.0.14"
+tempfile = "3.10.1"
+rocksdb = { version = "0.22.0", default-features = false, features = [
+  "snappy",
+  "lz4",
+] }
+fastwebsockets = { version = "0.6", features = ["upgrade", "unstable-split"] }
+hyper-util = { version = "0.1.0", features = ["tokio"] }
+zip = "2.1.1"
+fs_extra = "1.3.0"
+url = "2.5.2"
+wait-timeout = "0.2.0"
+json = "0.12.4" #This crate can be removed as everything that is done with it can be as well achieved with serde_json.
+ntex-files = "2.0.0"
+mdbook = "0.4.40"
+inquire = "0.7.5"
+serde_with = { version = "3.11.0", features = ["macros"] }
+num-traits = { version = "0.2.19" }
+regex = "1.11.1"
+indicatif = "0.17.9"
+tcp-console = { git = "ssh://git@github.com/Entropy-Foundation/tcp-console.git" }
+trybuild = "1.0.101"
+criterion = "0.5.1"
+itertools = "0.13.0"
+zxcvbn = "3.1.0"
+
+# Crates enabling HTTPS must be exactly of these verions to ensure compatibility with ntex.
+rustls = "~0.21.12"
+rustls-pemfile = "~1.0.4"
+webpki-roots = "~0.25.4"
+tokio-rustls = "~0.24.1"
+web3 = "0.19.0"
+zeroize = "1.7.0"
+
+### Supra dependencies ###
+chainspec = { path = "crates/chainspec" }
+batches = { path = "crates/libs/batches" }
+configurations = { path = "crates/configurations" }
+certificates = { path = "crates/libs/certificates" }
+committees = { path = "crates/libs/committees" }
+genesis = { path = "crates/libs/genesis" }
+key_pair = { path = "crates/libs/key_pair" }
+lifecycle = { path = "crates/libs/lifecycle" }
+migrations = { path = "crates/migrations" }
+payloads = { path = "crates/libs/payloads" }
+safety_rules = { path = "crates/libs/safety_rules" }
+smr_timestamp = { path = "crates/libs/smr_timestamp" }
+traits = { path = "crates/libs/traits" }
+transactions = { path = "crates/libs/transactions" }
+votes = { path = "crates/libs/votes" }
+errors = { path = "crates/libs/errors" }
+vm_pool = { path = "crates/vm_pool" }
+deduplicator = { path = "crates/deduplicator" }
+rpc_node = { path = "rpc_node" }
+supra = { path = "supra", default-features = false }
+archive = { path = "consensus/archive" }
+supra_build = { path = "crates/supra_build" }
+certifier = { path = "crates/certifier" }
+committed_block_synchronizer = { path = "crates/committed_block_synchronizer" }
+execution = { path = "consensus/execution" }
+lifecycle_types = { path = "consensus/types/lifecycle" }
+mempool = { path = "consensus/mempool" }
+moonshot = { path = "consensus/moonshot" }
+moonshot_types = { path = "consensus/types/moonshot" }
+node = { path = "consensus/node" }
+rpc = { path = "consensus/rpc", default-features = false }
+rocksstore = { path = "crates/rocksstore" }
+epoch_manager = { path = "consensus/epoch_manager" }
+encryption = { path = "crates/encryption" }
+file_io_types = { path = "crates/file_io/file_io_types" }
+file_io_derive = { path = "crates/file_io/file_io_derive" }
+path_config = { path = "crates/file_io/path_config" }
+helper = { path = "crates/helper" }
+network-tls = { path = "crates/network/tls" }
+network-manager = { path = "crates/network/manager" }
+network-examples = { path = "crates/network/examples" }
+notifier = { path = "crates/notifier" }
+smrcommon = { path = "crates/common" }
+supra_logger = { path = "crates/supra_logger" }
+task_manager = { path = "crates/task_manager" }
+test_utils = { path = "crates/test_utils" }
+test_utils_2 = { path = "crates/libs/test_utils_2" }
+types = { path = "crates/types" }
+version_derive = { path = "crates/version/version_derive" }
+version_types = { path = "crates/version/version_types" }
+pruner = { path = "crates/pruner" }
+snapshot = { path = "crates/snapshot" }
+consistency_warranter = { path = "crates/libs/consistency_warranter" }
+mempool_storage_ifc = { path = "crates/storage_interfaces/mempool_storage_ifc" }
+moonshot_storage_ifc = { path = "crates/storage_interfaces/moonshot_storage_ifc" }
+index_storage_ifc = { path = "crates/storage_interfaces/index_storage_ifc" }
+
+# supra-common specific
+nidkg_helper = { git = "ssh://git@github.com/Entropy-Foundation/supra-common", tag = "v0.21.1" }
+socrypto = { git = "ssh://git@github.com/Entropy-Foundation/supra-common", tag = "v0.21.1" }
+sodkg = { git = "ssh://git@github.com/Entropy-Foundation/supra-common", tag = "v0.21.1" }
+sop2p = { git = "ssh://git@github.com/Entropy-Foundation/supra-common", tag = "v0.21.1", features = [
+  "testing",
+] }
+soruntime = { git = "ssh://git@github.com/Entropy-Foundation/supra-common", tag = "v0.21.1" }
+soserde = { git = "ssh://git@github.com/Entropy-Foundation/supra-common", tag = "v0.21.1" }
+# TODO
+#   `sosmr` has been partially moved to `smr-moonshot`. However, there are still a few loose ends.
+#   This dependency is deprecated and **will be removed**
+#   after a refactor completely removing sosmr from `supra-common` is executed.
+deprecated_sosmr = { package = "sosmr", git = "ssh://git@github.com/Entropy-Foundation/supra-common", tag = "v0.21.1" }
+
+
+# References for when making modifications to supra-common locally.
+#
+# Note: The build scripts do not update supra-common properly and the below local refs cannot be
+# used in the Docker build files. To cause the latest commits to be pulled when developing
+# supra-common concurrently, build with the local refs below (or some remote ref other than the one
+# you actually want to build with) after pushing an update to the remote repo, then update the refs
+# to the desired remote ref once again. This should cause the caches to be invalidated properly,
+# which will lead to smr-moonshot compiling with the latest commit of the desired remote version of
+# supra-common.
+# nidkg_helper = { path = "../supra-common/socrypto/nidkg_helper" }
+# socrypto = { path = "../supra-common/socrypto" }
+# sodkg = { path = "../supra-common/sodkg" }
+# sop2p = { path = "../supra-common/sop2p" }
+# soruntime = { path = "../supra-common/soruntime" }
+# soserde = { path = "../supra-common/soserde" }
+# deprecated_sosmr = { package = "sosmr", path = "../supra-common/sosmr" }
+
+### Required PR https://github.com/Entr=
+
+### Aptos dependencies ###
+### Update remote_env/move_workspace/Move.toml
+## SupraFramework = { git = 'https://github.com/Entropy-Foundation/aptos-core.git', subdir = 'aptos-move/framework/supra-framework', rev = 'aptosvm-v1.16_supra-v1.3.0'}
+aptos-vm = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-vm-genesis = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-vm-types = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-types = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-crypto = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8", features = [
+  "cloneable-private-keys",
+] }
+
+aptos-block-executor = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-gas-schedule = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-cached-packages = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-framework = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-storage-interface = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+move-vm-types = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+move-core-types = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+move-binary-format = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-api = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos-api-types = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+aptos = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", default-features = false, tag = "aptosvm-v1.16_supra-v1.6.8" }
+supra-aptos = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+move-vm-runtime = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.6.8" }
+
+
+### RESERVED: Aptos dependencies (local)  ###
+# aptos-vm = { path = "../supra-aptos/aptos-move/aptos-vm" }
+# aptos-vm-genesis = { path = "../supra-aptos/aptos-move/vm-genesis" }
+# aptos-vm-types = { path = "../supra-aptos/aptos-move/aptos-vm-types" }
+# aptos-types = { path = "../supra-aptos/types" }
+# aptos-crypto = { path = "../supra-aptos/crates/aptos-crypto", features = [
+#    "cloneable-private-keys",
+# ] }
+# aptos-block-executor = { path = "../supra-aptos/aptos-move/block-executor" }
+# aptos-gas-schedule = { path = "../supra-aptos/aptos-move/aptos-gas-schedule" }
+# aptos-cached-packages = { path = "../supra-aptos/aptos-move/framework/cached-packages" }
+# aptos-bitvec = { path = "../supra-aptos/crates/aptos-bitvec" }
+# aptos-jellyfish-merkle = { path = "../supra-aptos/storage/jellyfish-merkle" }
+# aptos-logger = { path = "../supra-aptos/crates/aptos-logger" }
+# aptos-crypto-derive = { path = "../supra-aptos/crates/aptos-crypto-derive" }
+# aptos-framework = { path = "../supra-aptos/aptos-move/framework" }
+# aptos-storage-interface = { path = "../supra-aptos/storage/storage-interface" }
+# move-vm-types = { path = "../supra-aptos/third_party/move/move-vm/types" }
+# move-core-types = { path = "../supra-aptos/third_party/move/move-core/types" }
+# move-binary-format = { path = "../supra-aptos/third_party/move/move-binary-format" }
+# move-resource-viewer = { path = "../supra-aptos/third_party/move/tools/move-resource-viewer" }
+# aptos-api = { path = "../supra-aptos/api" }
+# aptos-api-types = { path = "../supra-aptos/api/types" }
+# aptos = { path = "../supra-aptos/crates/aptos", default-features = false }
+# supra-aptos = { path = "../supra-aptos/crates/supra" }
+# move-vm-runtime = { path = "../supra-aptos/third_party/move/move-vm/runtime" }
+
+# Dependencies that are required to recreate GenesisTransactions and verify Testnet GenesisBlob.
+aptos-vm-genesis-testnet = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.1.2", package = "aptos-vm-genesis" }
+aptos-types-testnet = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.1.2", package = "aptos-types" }
+aptos-crypto-testnet = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.1.2", features = [
+  "cloneable-private-keys",
+], package = "aptos-crypto" }
+aptos-cached-packages-testnet = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.1.2", package = "aptos-cached-packages" }
+move-core-types-testnet = { git = "ssh://git@github.com/Entropy-Foundation/aptos-core", tag = "aptosvm-v1.16_supra-v1.1.2", package = "move-core-types" }
+
+[patch.crates-io]
+serde-reflection = { git = "https://github.com/aptos-labs/serde-reflection", rev = "73b6bbf748334b71ff6d7d09d06a29e3062ca075" }
+merlin = { git = "https://github.com/aptos-labs/merlin" }
+x25519-dalek = { git = "https://github.com/aptos-labs/x25519-dalek", branch = "zeroize_v1" }
+
+# For development test and ci.
+[profile.devopt]
+inherits = "release"
+incremental = true
+debug = "line-tables-only"
+debug-assertions = true
+codegen-units = 32
+
+# For production deployment. Performance test should be run with this profile.
+[profile.release]
+debug = true
+overflow-checks = true
+
+# Not tested, do not use in production.
+[profile.release-lto]
+inherits = "release"
+lto = true
+
