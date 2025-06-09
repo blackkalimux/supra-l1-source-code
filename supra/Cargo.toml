@@ -1,0 +1,79 @@
+[package]
+name = "supra"
+edition.workspace = true
+version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+### Supra dependencies ###
+archive = { workspace = true }
+configurations = { workspace = true }
+committees = { workspace = true }
+chainspec = { workspace = true }
+execution = { workspace = true }
+file_io_derive = { workspace = true }
+nidkg_helper = { workspace = true }
+node = { workspace = true }
+migrations = { workspace = true }
+smrcommon = { workspace = true }
+socrypto = { workspace = true }
+sodkg = { workspace = true }
+types = { workspace = true }
+file_io_types = { workspace = true }
+rocksstore = { workspace = true }
+soserde = { workspace = true }
+supra_build = { workspace = true }
+supra_logger = { workspace = true }
+transactions = { workspace = true }
+# 3rd party dependencies
+async-trait = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["env"] }
+hex = { workspace = true, features = ["serde"] }
+thiserror = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+tokio = { workspace = true }
+chrono = { workspace = true }
+reqwest = { workspace = true }
+tracing-appender = { workspace = true }
+test_utils = { workspace = true }
+rocksdb = { workspace = true }
+encryption = { workspace = true }
+zip = { workspace = true }
+fs_extra = { workspace = true }
+tempfile = { workspace = true }
+rayon = { workspace = true }
+url = { workspace = true }
+aptos-vm-genesis = { workspace = true }
+bcs = { workspace = true }
+regex = { workspace = true }
+tcp-console = { workspace = true }
+inquire = { workspace = true }
+rpc_node = { workspace = true }
+bytes = { workspace = true }
+# Aptos related dependencies
+aptos-cached-packages = { workspace = true }
+aptos-types = { workspace = true }
+aptos-crypto = { workspace = true }
+aptos = { workspace = true , features = ["no-upload-proposal"]}
+supra-aptos = { workspace = true }
+aptos-api-types = { workspace = true }
+move-core-types = { workspace = true }
+path_config = { workspace = true }
+
+aptos-types-testnet = { workspace = true }
+workspace-hack = { version = "0.1", path = "../crates/workspace-hack" }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+alloc-track = { workspace = true, optional = true }
+console-subscriber = { workspace = true, optional = true }
+
+
+[features]
+default = []
+memory_profile = ["dep:alloc-track", "dep:console-subscriber"]
+
