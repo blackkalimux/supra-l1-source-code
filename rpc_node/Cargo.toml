@@ -1,0 +1,116 @@
+[package]
+name = "rpc_node"
+edition.workspace = true
+version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+# Supra dependencies
+committees = { workspace = true }
+configurations = { workspace = true }
+genesis = { workspace = true }
+vm_pool = { workspace = true }
+archive = { workspace = true }
+index_storage_ifc = { workspace = true }
+epoch_manager = { workspace = true }
+errors = { workspace = true }
+execution = { workspace = true }
+lifecycle = { workspace = true }
+lifecycle_types = { workspace = true }
+mempool = { workspace = true }
+migrations = { workspace = true }
+notifier = { workspace = true }
+node = { workspace = true }
+rocksstore = { workspace = true }
+rpc = { workspace = true, default-features = false, features = ["client"] }
+smr_timestamp = { workspace = true }
+soserde = { workspace = true }
+snapshot = { workspace = true }
+consistency_warranter = { workspace = true }
+supra_build = { workspace = true }
+supra_logger = { workspace = true }
+traits = { workspace = true }
+transactions = { workspace = true }
+types = { workspace = true }
+votes = { workspace = true }
+network-manager = { workspace = true }
+# 3rd party dependencies
+certifier = { workspace = true }
+task_manager = { workspace = true }
+file_io_types = { workspace = true }
+tcp-console = { workspace = true }
+pruner = { workspace = true }
+version_derive = { workspace = true }
+version_types = { workspace = true }
+chainspec = { workspace = true }
+# supra-common deps
+smrcommon = { workspace = true }
+sop2p = { workspace = true }
+socrypto = { workspace = true }
+moonshot_storage_ifc = { workspace = true }
+
+# third-party deps
+aptos-types = { workspace = true }
+aptos-vm = { workspace = true }
+aptos-cached-packages = { workspace = true }
+aptos-crypto = { workspace = true }
+aptos-vm-genesis = { workspace = true }
+aptos-api-types = { workspace = true }
+move-core-types = { workspace = true }
+move-binary-format = { workspace = true }
+
+tokio = { workspace = true, features = [
+  "full",
+  "tracing",
+] } # Enable tokio tracingnum-traits = { workspace = true }
+anyhow = { workspace = true }
+bytes = { workspace = true }
+lru = { workspace = true }
+rocksdb = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tempfile = { workspace = true }
+tokio-util = { workspace = true }
+toml = { workspace = true }
+ntex = { workspace = true, features = ["tokio"] }
+utoipa = { workspace = true, features = ["preserve_order", "yaml"] }
+utoipa-swagger-ui = { workspace = true }
+clap = { workspace = true, features = ["env"] }
+bcs = { workspace = true }
+num-traits = { workspace = true }
+
+# Crates enabling HTTPS must be exactly of these verions to ensure compatibility with ntex.
+network-tls = { workspace = true }
+rustls = { workspace = true }
+async-trait = { workspace = true }
+dashmap = { workspace = true }
+ntex-files = { workspace = true }
+hex = "0.4.3"
+workspace-hack = { version = "0.1", path = "../crates/workspace-hack" }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+alloc-track = { workspace = true, optional = true }
+console-subscriber = { workspace = true, optional = true }
+
+[dev-dependencies]
+serde_yaml = { workspace = true }
+
+test_utils_2 = { workspace = true }
+batches = { workspace = true }
+test_utils = { workspace = true }
+certifier = { workspace = true, features = ["testing"] }
+execution = { workspace = true, features = ["testing"] }
+epoch_manager = { workspace = true, features = ["testing"] }
+archive = { workspace = true, features = ["testing"] }
+futures = { workspace = true }
+insta = { workspace = true, features = ["filters"] }
+urlencoding = { workspace = true }
+ntex-bytes = { workspace = true }
+
+[features]
+openapi = []
+default = ["openapi"]
